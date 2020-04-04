@@ -1,0 +1,29 @@
+.left-content{
+    text-align:left;
+}
+.about{
+    box-shadow: 2px 2px 10px #191818;
+    background-color:#fff;
+    text-align:left;
+    padding:20px 10px;
+}
+h2{
+    font-size:20px;
+    font-weight: 600;
+    color:#333;
+    padding:15px 10px;
+    border-bottom:1px solid #ddd;
+    margin-bottom:20px;
+}
+p{
+    font-size:14px;
+    color:#666;
+}
+.guestbook{
+    margin-top:20px;
+}
+.guestbook h3{
+    font-size:18px;
+    color:#666;
+    font-weight: 300;
+}

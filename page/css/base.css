@@ -108,3 +108,32 @@ header{
 .myheader .search-box button:hover{
     background-color:#eee;
 }
+
+.myfooter{
+    width:100%;
+    min-width:1000px;
+    background-color:#000;
+    height:80px;
+    text-align:center;
+    padding:10px 20px;
+    /* position:absolute;
+    bottom:0; */
+    box-sizing:border-box;
+    color:#eee;
+    margin-top:20px;
+}
+.myfooter>div>a{
+    color:#ddd;
+    font-size:14px;
+    margin:0 5px
+ 
+}
+.myfooter a:hover{
+    color:#337ab7;
+    
+}
+.myfooter>p{
+    margin-top:10px;
+    font-size:14px;
+}
+

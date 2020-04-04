@@ -1,0 +1,29 @@
+.left-content{
+    text-align:left;
+}
+.welcome-word{
+    box-shadow: 2px 2px 10px #191818;
+    background-color:#fff;
+    text-align:left;
+    padding:20px 10px;
+}
+.welcome-word>p{
+    margin:10px;
+}
+.welcome-word>div{
+    margin:10px;
+}
+.welcome-word>div>p{
+    margin-top:10px;
+    font-size:14px;
+    color:#f20;
+}
+
+.guestbook{
+    margin-top:20px;
+}
+.guestbook h3{
+    font-size:18px;
+    color:#666;
+    font-weight: 300;
+}
