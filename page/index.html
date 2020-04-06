@@ -7,6 +7,7 @@
     <title>myblog</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
 </head>
 
 <body>
@@ -27,76 +28,49 @@
     </header>
     <div class="content clearFix">
         <div class="left-content">
-            <div class="every-day">
+            <div class="every-day" id="every-day">
                 <span>每日一句(202044)</span>
-                <p class="english">ffsgfdg</p>
+                <p class="english" v-html="getContent">ffsgfdg</p>
                 <p class="chinese"><span>天道酬勤四体不勤五谷不分</span><span>-----刘明凡</span></p>
             </div>
-            <div class="article-content">
-                <h3 class="article-title">
-                    <a href="#">Laravel5.4安装passport时遇到的一些问题</a>
-                </h3>
-                <p class="article-description">
-                    安装时可能不支持高版本，我使用了composer require laravel/passport ~4.0安装后执行迁移时nothing to migrate，需要手动注册Provider，
-                    在config/app.php中providers中添加Laravel\Passport\PassportServiceProvider::class。执行php artisan
-                    passport:install时提示“There are no commands defined in the “passport” namespace.”
-                    需要执行cache:clear和config:cache 更新缓存。...
-                </p>
-                <div class="article-footer">
-                    <span class="time">发布于2019-12-06 |</span>
-                    <span class="count">浏览器(5,427) |</span>
-                    <span class="tags">Tags:laravel</span>
+            <div id="article-list">
+                <div class="article-content" v-for='(item,index) in articleList' :key="index">
+                    <h3 class="article-title">
+                        <a :href="item.link">{{item.title}}</a>
+                    </h3>
+                    <p class="article-description">
+                        {{item.content}}
+                    </p>
+                    <div class="article-footer">
+                        <span class="time">{{item.date}} |</span>
+                        <span class="count">浏览器({{item.views}}) |</span>
+                        <span class="tags">Tags:{{item.tags}}</span>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="right-content">
-            <div class="tags-cloud">
+            <div class="tags-cloud" id="randomTags">
                 <p class="tags-title">随机标签云</p>
                 <div class="tags-content">
-                    <a href="#">dfdadf</a>
-                    <a href="#">dfdadf</a>
-                    <a href="#">dfdadf</a>
+                    <a href="#" v-for='tag in tags' :style="{color:randomColor(),fontSize:randomFont()}">{{tag}}</a>
                 </div>
             </div>
-            <div class="hot-place">
+            <div class="hot-place" id="hot-place">
                 <dt>最近热门</dt>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
-                <dd><a href="#">使用码云git的webhook实现生产环境代</a></dd>
+                <dd v-for="item in titleList"><a :href="item.link">{{item.title}}</a></dd>
             </div>
-            <div class="hot-comment">
+            <div class="hot-comment" id="hot-comment">
                 <ul>
                     <h3 class="hot-comment-title">最新评论</h3>
-                    <li>
+                    <li v-for="item in commentsList">
                         <p>
-                            <span class="user-name">跪求大佬</span>
-                            <span class="comment-time">1[1周前]</span>
+                            <span class="user-name">{{item.userName}}</span>
+                            <span class="comment-time">{{item.ctime}}</span>
                         </p>
-                        <p class="hot-comment-des"><a href="#"> 我是小白，看起来就很懵逼的这种</a></p>
+                        <p class="hot-comment-des"><a :href="item.contentLink"> {{item.content}}</a></p>
                     </li>
-                    <li>
-                        <p>
-                            <span class="user-name">跪求大佬</span>
-                            <span class="comment-time">1[1周前]</span>
-                        </p>
-                        <p class="hot-comment-des"><a href="#"> 我是小白，看起来就很懵逼的这种</a></p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="user-name">跪求大佬</span>
-                            <span class="comment-time">1[1周前]</span>
-                        </p>
-                        <p class="hot-comment-des">
-                            <a href="#"> 我是小白，看起来就很懵逼的这种</a>
-                        </p>
-                    </li>
+                  
                 </ul>
             </div>
             <div class="friend-link">
@@ -156,7 +130,8 @@
         </p>
     </footer>
 
-
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
 </body>
 
 </html>
