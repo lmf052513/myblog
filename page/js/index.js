@@ -10,6 +10,16 @@ let everyDay = new Vue({
     },
     created(){
         //请求数据给content赋值
+        axios({
+            methods:'get',
+            url:'/queryEveryDay'
+        }).then(res => {
+            console.log(res.data.data[0].content);
+            this.content = res.data.data[0].content
+            
+        }).catch(err => {
+            console.log(err)
+        })
     }
 })
 
